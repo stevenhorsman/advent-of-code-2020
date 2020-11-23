@@ -106,3 +106,9 @@ venv.bak/
 # vscode
 *.code-workspace
 .history/*
+
+# Mac
+.DS_Store
+
+# privacy
+session_id
