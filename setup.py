@@ -51,8 +51,7 @@ if __name__ == "__main__":
 def create_py_contents(filename, day_no):
     create_file_contents(filename, py_file, '{{day}}', day_no)
 
-test_file = """import {{name}}
-import fileinput
+test_file = """import {{name}}, fileinput
 
 def test_part1_example_1():
   data = '''
