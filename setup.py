@@ -5,7 +5,7 @@ import requests
 import argparse
 from datetime import date
 
-year = 2015
+year = 2020
 
 def main():
     parser = argparse.ArgumentParser(description='An advent of code setup script')
