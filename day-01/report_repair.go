@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -19,32 +20,47 @@ func GetInts(input string) []int {
 	return numbers
 }
 
-func Part1(input string) int {
-	entries := GetInts(input)
+func FindProductOfPair(entries []int, target int) int {
+	product := -1
 
-	for i, e1 := range entries {
-		for _, e2 := range entries[i:] {
-			if e1+e2 == 2020 {
-				return e1 * e2
-			}
+	// Brute force method:
+	// for i, e1 := range entries {
+	// 	for _, e2 := range entries[i:] {
+	// 		if e1+e2 == target {
+	// 			product = e1 * e2
+	// 		}
+	// 	}
+	// }
+
+	// Better implementation from https://github.com/crshnburn/adventofcode2020/blob/main/day1/day1.go
+	sort.Ints(entries)
+	for _, e := range entries {
+		remainder := target - e
+		index := sort.SearchInts(entries, remainder)
+		if index < len(entries) && entries[index] == remainder {
+			product = remainder * e
+			break
 		}
 	}
-	return 0
+	return product
+}
+
+func Part1(input string) int {
+	entries := GetInts(input)
+	return FindProductOfPair(entries, 2020)
 }
 
 func Part2(input string) int {
 	entries := GetInts(input)
-
-	for i, e1 := range entries {
-		for j, e2 := range entries[i:] {
-			for _, e3 := range entries[j:] {
-				if e1+e2+e3 == 2020 {
-					return e1 * e2 * e3
-				}
-			}
+	product := -1
+	for _, e := range entries {
+		pairProduct := FindProductOfPair(entries, 2020-e)
+		if pairProduct != -1 {
+			product = e * pairProduct
+			break
 		}
 	}
-	return 0
+	return product
 }
 
 func main() {
