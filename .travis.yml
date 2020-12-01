@@ -1,8 +1,15 @@
-language: python
-python:
-  - "3.8"
-cache: pip
-install:
-  - pip install -r requirements.txt
-script:
-  - pytest
+matrix:
+  include:
+    - language: python
+      python:
+        - "3.8"
+      cache: pip
+      install:
+        - pip install -r requirements.txt
+      script:
+        - pytest
+    - language: go
+      go:
+        - 1.13.x
+      script:
+        - go test -v ./...
