@@ -1,11 +1,11 @@
-import itertools, functools, operator
+import itertools, math
 
 input_file = 'day-01/input.txt'
 
 def find_product_of_sum_combination(input, size, target = 2020):
   entries = list(map(int, input.splitlines()))
   for combo in [combo for combo in itertools.combinations(entries, size) if sum(combo) == target]:
-    return functools.reduce(operator.mul, combo, 1)
+    return math.prod(combo)
 
 def part1(input):
   return find_product_of_sum_combination(input, 2)
