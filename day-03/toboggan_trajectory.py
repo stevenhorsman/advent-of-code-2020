@@ -2,24 +2,24 @@ import math
 
 input_file = 'day-03/input.txt'
 
-def count_trees(grid, right, down):
-  width = len(grid[0])
+def count_trees(lines, right, down):
+  width = len(lines[0])
   trees = 0
   col = 0
-  for i in range(0, len(grid), down):
-    if grid[i][col] == '#':
+  for i in range(0, len(lines), down):
+    if lines[i][col] == '#':
       trees += 1
     col = (col + right) % width
   return trees
 
 def part1(input):
-  grid = [[char for char in line] for line in input.splitlines()]
-  return count_trees(grid, 3, 1)
+  lines = input.splitlines()
+  return count_trees(lines, 3, 1)
 
 def part2(input):
-  grid = [[char for char in line] for line in input.splitlines()]
+  lines = input.splitlines()
   slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
-  return math.prod([count_trees(grid, right, down) for (right, down) in slopes])
+  return math.prod([count_trees(lines, right, down) for (right, down) in slopes])
 
 if __name__ == "__main__":
   with open(input_file) as f:
