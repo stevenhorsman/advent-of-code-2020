@@ -6,17 +6,20 @@ class PassportData:
 
   @staticmethod
   def __is_valid_height(data):
-    height, units = list(re.match(r"(\d+)(\w{2})", data).groups())
-    return (units == 'cm' and 150 <= int(height) <= 193) or (units == 'in' and 59 <= int(height) <= 76)
+    try:
+      height, units = list(re.match(r"^(\d+)(cm|in)$", data).groups())
+      return (units == 'cm' and 150 <= int(height) <= 193) or (units == 'in' and 59 <= int(height) <= 76)
+    except AttributeError:
+      return False
 
   field_validator = {
-    'byr': lambda data: 1920 <= int(data) <= 2002,
-    'iyr': lambda data: 2010 <= int(data) <= 2020,
-    'eyr': lambda data: 2020 <= int(data) <= 2030,
+    'byr': lambda data: data.isdigit() and 1920 <= int(data) <= 2002,
+    'iyr': lambda data: data.isdigit() and 2010 <= int(data) <= 2020,
+    'eyr': lambda data: data.isdigit() and 2020 <= int(data) <= 2030,
     'hgt': lambda data: PassportData.__is_valid_height(data),
     'hcl': lambda data: re.match('^#(?:[0-9a-fA-F]{1,2}){3}$', data) != None,
     'ecl': lambda data: data in ['amb','blu','brn','gry','grn','hzl','oth'],
-    'pid': lambda data: re.match('^^[0-9]{9}$', data)
+    'pid': lambda data: re.match('^[0-9]{9}$', data)
   }
 
   def __init__(self, passport_string):

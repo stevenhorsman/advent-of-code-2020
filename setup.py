@@ -131,8 +131,8 @@ func main() {
 	}
 	data := string(b)
 
-	fmt.Printf("Part 1: %d\n", Part1(data))
-	fmt.Printf("Part 2: %d\n", Part2(data))
+	fmt.Printf("Part 1: %d\\n", Part1(data))
+	fmt.Printf("Part 2: %d\\n", Part2(data))
 }"""
 
 def create_go_contents(filename, day_no):
