@@ -26,8 +26,7 @@ def part1(input):
 def count_children(node, children):
   descendants = 0
   for quantity, child in children[node]:
-    descendants += quantity
-    descendants += (quantity * count_children(child, children))
+    descendants += quantity + (quantity * count_children(child, children))
   return descendants
 
 def part2(input):
