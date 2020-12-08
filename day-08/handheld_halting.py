@@ -14,6 +14,13 @@ class Program:
       pass
     return self.pc >= len(self.lines)
 
+  def get(self, x):
+    try:
+      v = int(x)
+      return v
+    except:
+      return self.regs[x]
+
   def tick(self):
     if not (0 <= self.pc < len(self.lines)):
       return False
