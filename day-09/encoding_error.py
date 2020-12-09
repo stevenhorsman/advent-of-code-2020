@@ -20,9 +20,9 @@ def part2(input, window = 25):
   low = 0
   high = 1
   while high < len(numbers): 
-    sum_size = sum(numbers[low:high])
+    sum_size = sum(numbers[low:high+1])
     if sum_size == target:
-      return min(numbers[low:high]) + max(numbers[low:high])
+      return min(numbers[low:high+1]) + max(numbers[low:high+1])
     elif sum_size < target:
       high += 1
     else:
