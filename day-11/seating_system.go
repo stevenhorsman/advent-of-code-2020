@@ -21,6 +21,12 @@ func (p point) String() string {
 	return fmt.Sprintf("(%d, %d)", p.x, p.y)
 }
 
+const (
+	FLOOR    = '.'
+	EMPTY    = 'L'
+	OCCUPIED = '#'
+)
+
 func ReadInput(input string) map[point]rune {
 	grid := map[point]rune{}
 	for y, line := range strings.Split(strings.TrimSpace(input), "\n") {
@@ -34,7 +40,7 @@ func ReadInput(input string) map[point]rune {
 func CountOccupied(grid map[point]rune) int {
 	count := 0
 	for _, v := range grid {
-		if v == '#' {
+		if v == OCCUPIED {
 			count++
 		}
 	}
@@ -64,18 +70,18 @@ func Converge(grid map[point]rune, part2 bool) int {
 			for _, d := range deltas {
 				adj := point.add(d)
 				if part2 {
-					for grid[adj] == '.' {
+					for grid[adj] == EMPTY {
 						adj = adj.add(d)
 					}
 				}
-				if grid[adj] == '#' {
+				if grid[adj] == OCCUPIED {
 					neighbours++
 				}
 			}
-			if seat == '#' && neighbours >= crowded {
-				next[point] = 'L'
-			} else if seat == 'L' && neighbours == 0 {
-				next[point] = '#'
+			if seat == OCCUPIED && neighbours >= crowded {
+				next[point] = EMPTY
+			} else if seat == EMPTY && neighbours == 0 {
+				next[point] = OCCUPIED
 			} else {
 				next[point] = seat
 			}
