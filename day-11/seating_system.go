@@ -70,7 +70,7 @@ func Converge(grid map[point]rune, part2 bool) int {
 			for _, d := range deltas {
 				adj := point.add(d)
 				if part2 {
-					for grid[adj] == EMPTY {
+					for grid[adj] == FLOOR {
 						adj = adj.add(d)
 					}
 				}
