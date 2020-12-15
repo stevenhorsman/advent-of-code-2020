@@ -5,10 +5,11 @@ input_file = 'day-15/input.txt'
 def van_eck(input, iterations):
   given = [int(x) for x in input.split(',')]
   last_seen = collections.defaultdict(int)
-  for i in range(len(given)-1):
-    last_seen[given[i]] = i+1
-    
-  previous = given[-1]
+  
+  previous = 0
+  for i, previous in enumerate(given):
+    last_seen[previous] = i+1
+
   for i in range (len(given),iterations):
     last_seen[previous], previous = i, 0 if previous not in last_seen else i - last_seen[previous]
   return previous
