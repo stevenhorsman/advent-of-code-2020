@@ -36,7 +36,7 @@ nearby tickets:
 7,3,47
 15,1,5
 5,14,9'''[1:]
-  assert ticket_translation.part2(data) == (12 * 13)
+  assert ticket_translation.part2(data) == 12 * 13
 
 def test_part2():
   with open(ticket_translation.input_file) as f:
