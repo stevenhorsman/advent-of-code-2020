@@ -69,44 +69,6 @@ def part1(input, iterations = 6):
 def part2(input, iterations = 6):
   return evolve(input, iterations, 4)
 
-# TODO - delete
-def create_input_seta(input):
-  active = set()
-  lines = input.splitlines()
-
-  z = 0
-  for y in range(len(lines)):
-    for x in range(len(lines[y])):
-      if lines[y][x] == '#':
-        active.add((x,y,z))
-  return active
-
-def count_neighboursa(active, x, y, z):
-  neighbours = 0
-  for dx in [-1,0,1]:
-    for dy in [-1,0,1]:
-      for dz in [-1,0,1]:
-        if not (dx==0 and  dy==0 and dz==0) and (x+dx, y+dy, z+dz) in active:
-            neighbours += 1
-  return neighbours
-
-def part1a(input, iterations = 6):
-  active = create_input_seta(input)
-  for i in range(iterations):
-    bounds = i+8 # todo - work out min and max of sample
-    next_gen = set()
-    for x in range(-bounds, bounds+1):
-      for y in range(-bounds, bounds+1):
-        for z in range(-bounds, bounds+1):
-          neighbours = count_neighboursa(active, x, y, z)
-          if (x,y,z) in active and neighbours in [2,3]:
-            next_gen.add((x,y,z))
-          elif (x,y,z) not in active and neighbours == 3:
-            next_gen.add((x,y,z))
-    active = next_gen
-  return len(active)
-
-
 if __name__ == "__main__":
   with open(input_file) as f:
     data = f.read()
