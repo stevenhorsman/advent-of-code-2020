@@ -14,7 +14,7 @@ def test_part1_example_1():
 def test_part1_example_2():
   assert conway_cubes.part1(example_data,3) == 38
 
-def test_part1_example_4():
+def test_part1_example_3():
   assert conway_cubes.part1(example_data,6) == 112
 
 def test_part1():
@@ -23,7 +23,7 @@ def test_part1():
   expected = 242
   assert conway_cubes.part1(data) == expected
 
-def test_part2_example_2():
+def test_part2_example_1():
   assert conway_cubes.part2(example_data) == 848
 
 def test_part2():
