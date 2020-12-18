@@ -8,10 +8,6 @@ def test_part1_example_2():
   data = '1 + (2 * 3) + (4 * (5 + 6))'
   assert operation_order.part1(data) == 51
 
-def test_part1_example_temp():
-  data = '5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))'
-  assert operation_order.part1(data) == 12240
-
 def test_part1_example_3():
   data = '''
 2 * 3 + (4 * 5)
