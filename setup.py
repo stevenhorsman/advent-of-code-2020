@@ -113,7 +113,7 @@ import (
 	"strings"
 )
 
-const input_file string = "./day-{{day}}/input.txt"
+const inputFile string = "./day-{{day}}/input.txt"
 
 
 func Part1(input string) int {
@@ -125,7 +125,7 @@ func Part2(input string) int {
 }
 
 func main() {
-	b, err := ioutil.ReadFile(input_file)
+	b, err := ioutil.ReadFile(inputFile)
 	if err != nil {
 		fmt.Print(err)
 	}
