@@ -115,11 +115,12 @@ import (
 
 const inputFile string = "./day-{{day}}/input.txt"
 
-
+//Part1 - Solution to Part 1 of the puzzle
 func Part1(input string) int {
 	return 0
 }
 
+//Part2 - Solution to Part 2 of the puzzle
 func Part2(input string) int {
 	return 0
 }
