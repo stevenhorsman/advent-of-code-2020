@@ -160,11 +160,11 @@ func TestPart1Example1(t *testing.T) {
 }
 
 func TestPart1(t *testing.T) {
-	b, err := ioutil.ReadFile("./input.txt")
+	bytes, err := ioutil.ReadFile("./input.txt")
 	if err != nil {
 		fmt.Print(err)
 	}
-	data := string(b)
+	data := string(bytes)
 
 	expected := -1
 	actual := Part1(data)
@@ -186,11 +186,11 @@ func TestPart2Example1(t *testing.T) {
 }
 
 func TestPart2(t *testing.T) {
-	b, err := ioutil.ReadFile("./input.txt")
+	bytes, err := ioutil.ReadFile("./input.txt")
 	if err != nil {
 		fmt.Print(err)
 	}
-	data := string(b)
+	data := string(bytes)
 
 	expected := -1
 	actual := Part2(data)
