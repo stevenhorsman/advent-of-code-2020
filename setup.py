@@ -197,6 +197,17 @@ func TestPart2(t *testing.T) {
 	if actual != expected {
 		t.Errorf("Expected %d but was %d\\n", expected, actual)
 	}
+
+  func BenchmarkPart2(b *testing.B) {
+	bytes, err := ioutil.ReadFile("./input.txt")
+	if err != nil {
+		fmt.Print(err)
+	}
+	data := string(bytes)
+	b.ResetTimer()
+	for n := 0; n < b.N; n++ {
+		Part2(data)
+	}
 }"""
 
 def create_go_test_contents(filename):
