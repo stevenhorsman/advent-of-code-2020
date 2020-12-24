@@ -50,10 +50,10 @@ def evolve(input, iterations, dimensions):
   for i in range(iterations):
     points_to_check = set()
     for point in active:
-      points_to_check = points_to_check.union({point})
-      points_to_check = points_to_check.union(point.get_neighbours())
+      points_to_check.add(point)
+      for neighbour in point.get_neighbours():
+        points_to_check.add(neighbour)
     next_gen = set()
-    neighbour_cache = {}
     for point in points_to_check:
       neighbour_count = count_neighbours(active, point)
       if point in active and neighbour_count in [2,3]:
