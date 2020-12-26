@@ -2,11 +2,11 @@ input_file = 'day-25/input.txt'
 
 def get_secret(public_key):
   secret, calc = 0,1
-  while public_key != calc:
+  while calc != public_key:
     secret += 1
     calc *= 7
     calc %= 20201227
-    # calc = pow(7, secret, 20201227) # Doing the above is much faster than pow
+    # calc = pow(7, secret, 20201227) # Doing the above is much faster than pow and re-calculating each loop
   return secret
 
 def part1(input):
