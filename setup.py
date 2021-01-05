@@ -48,10 +48,10 @@ def main():
 
 PY_FILE = """INPUT_FILE = 'day_{{day}}/input.txt'
 
-def part1(input):
+def part1(input_string):
   return 0
 
-def part2(input):
+def part2(input_string):
   return 0
 
 if __name__ == "__main__":
@@ -62,7 +62,8 @@ if __name__ == "__main__":
 def create_py_contents(filename, day_no):
   create_file_contents(filename, PY_FILE, '{{day}}', day_no)
 
-TEST_FILE = """import {{name}}, fileinput
+TEST_FILE = """import {{name}}
+import fileinput
 
 def test_part1_example_1():
   data = '''
