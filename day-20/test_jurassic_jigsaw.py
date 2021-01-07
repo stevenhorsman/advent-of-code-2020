@@ -233,3 +233,8 @@ def test_part2():
     data = f.read()
   expected = 1885
   assert jurassic_jigsaw.part2(data) == expected
+
+def test_part2_benchmark(benchmark):
+  with open(jurassic_jigsaw.input_file) as f:
+    data = f.read()
+  benchmark(jurassic_jigsaw.part2, data)

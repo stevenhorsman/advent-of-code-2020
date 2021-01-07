@@ -2,6 +2,8 @@ requests
 networkx
 pyyaml
 pytest
+pytest-benchmark
+pygal
 numpy
 
 # d:/workspaces/advent-of-code-2019/.venv/Scripts/python.exe -m pip install -r requirements.txt

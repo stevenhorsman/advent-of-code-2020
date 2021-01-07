@@ -96,6 +96,11 @@ def test_part2():
     data = f.read()
   expected = -1
   assert {{name}}.part2(data) == expected
+
+def test_part2_benchmark(benchmark):
+  with open({{name}}.INPUT_FILE) as f:
+    data = f.read()
+  benchmark({{name}}.part2, data)
 """
 def create_test_contents(filename, name):
   create_file_contents(filename, TEST_FILE, '{{name}}', name)

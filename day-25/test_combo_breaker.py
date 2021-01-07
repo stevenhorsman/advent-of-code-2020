@@ -12,3 +12,8 @@ def test_part1():
     data = f.read()
   expected = 1478097
   assert combo_breaker.part1(data) == expected
+
+def test_part1_benchmark(benchmark):
+  with open(combo_breaker.input_file) as f:
+    data = f.read()
+  benchmark(combo_breaker.part1, data)
